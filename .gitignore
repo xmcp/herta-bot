@@ -1,6 +1,7 @@
 .idea/
 .env
 /play/
-cache/
+/app/cache/*
+!/app/cache/.gitkeep
 .langgraph_api/
 *.egg-info/
