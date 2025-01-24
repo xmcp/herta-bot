@@ -1,0 +1,6 @@
+{
+  "dependencies": ["."],
+  "graphs": {
+    "agent": "./herta_agent_launcher.py:graph"
+  }
+}
