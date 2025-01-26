@@ -7,8 +7,8 @@ from ..state import EachCitationState, OverallState
 
 SYSTEM_MSG = '''
 Below are text snippets in an academic paper with title "{{paper.title}}".
-These snippets are referring to the TARGET paper with title "{target_paper.title}".
-You need to judge whether ANY sentence contains a positive comment of the TARGET title.
+These snippets are referring to the TARGET paper with title "{{target_paper.title}}".
+You need to judge whether ANY sentence contains a positive comment of the TARGET title with the provided tool.
 
 E.g., "The TARGET work [XX] improved the performance of previous works [YY, ZZ]." -> true
 E.g., "There are many open-source tools available, including TARGET work [XX]." -> true
@@ -27,6 +27,8 @@ choose_paper_template = ChatPromptTemplate([
 ], template_format='jinja2')
 
 class PositiveOutput(TypedDict):
+    """ Use this tool to submit the answer. """
+
     positive: bool
 
 def judge_sentiment(state: EachCitationState, config: RunnableConfig) -> OverallState:

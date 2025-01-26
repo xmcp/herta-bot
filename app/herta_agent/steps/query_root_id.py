@@ -9,7 +9,7 @@ from ..configuration import Configuration
 SYSTEM_MSG = '''
 Below are multiple papers.
 Choose the index of the paper that EXACTLY match the title "{{title}}".
-If none of them match, output null.
+If none of them match, submit null.
 '''.strip()
 
 USER_MSG = '''
@@ -24,6 +24,8 @@ choose_paper_template = ChatPromptTemplate([
 ], template_format='jinja2')
 
 class IndexOutput(TypedDict):
+    """ Use this tool to submit the answer. """
+
     index: Optional[int]
 
 def query_root_id(state: OverallState, config: RunnableConfig) -> OverallState:
