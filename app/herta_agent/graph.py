@@ -25,5 +25,5 @@ builder.add_conditional_edges('dispatch_citations', continue_to_each_citation, [
 builder.add_edge('judge_sentiment', 'make_report')
 builder.add_edge('make_report', END)
 
-graph = builder.compile(debug=bool(os.getenv('herta_debug', 'false')))
+graph = builder.compile(debug=os.getenv('herta_debug', '').lower()=='true')
 graph.name = 'Herta Agent'
